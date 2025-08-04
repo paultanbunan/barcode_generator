@@ -1,0 +1,5 @@
+pillow==11.3.0
+pyinstaller==6.15.0
+pyinstaller-hooks-contrib==2025.8
+python-barcode==0.15.1
+setuptools==80.9.0
