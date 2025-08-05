@@ -26,7 +26,7 @@ jobs:
           pyinstaller --onedir --windowed --add-data "Arial.ttf;." --hidden-import=tkinter barcode_app.py
 
       - name: Upload .exe as artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: barcode-app-windows
           path: dist/barcode_app/**
