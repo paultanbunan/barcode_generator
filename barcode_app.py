@@ -36,8 +36,15 @@ class PatchedImageWriter(ImageWriter):
             log(f"Font load error: {e}")
             return ImageFont.load_default()
 
-# Prepare font path
-font_path = resource_path('Arial.ttf')  # Ensure Arial.ttf is bundled
+# Determine base path (whether running from .exe or raw .py)
+if getattr(sys, 'frozen', False):
+    base_path = sys._MEIPASS if hasattr(sys, '_MEIPASS') else os.path.dirname(sys.executable)
+else:
+    base_path = os.path.abspath(".")
+
+# Load font from inside the bundled/extracted folder
+font_path = os.path.join(base_path, 'Arial.ttf')
+font = ImageFont.truetype(font_path, 20) # Ensure Arial.ttf is bundled
 
 def generate_barcode():
     data = entry.get().strip()
